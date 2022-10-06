@@ -49,8 +49,19 @@ public class Student {
     )
     private String email;
 
-    @Column(name = "age")
+    @Column(
+            name = "age",
+            nullable = false
+    )
     private Integer age;
+
+    // Owning entity, it owns the student id card
+    @OneToOne(
+            mappedBy = "student",
+            orphanRemoval = true
+
+    )
+    private StudentIdCard studentIdCard;
 
     public Student(String firstName,
                    String lastName,
